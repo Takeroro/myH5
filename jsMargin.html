@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#myDiv {
+    border: 1px solid #FF0000;
+}
+</style>
+</head>
+<body>
+
+<div id="myDiv">This is a div.</div>
+<br>
+<button type="button" onclick="myFunction()">Change margin</button>
+
+<script>
+function myFunction() {
+    // document.getElementById("myDiv").style.margin = "40px";
+    //默认fontSize = 16px;
+    document.getElementById("myDiv").style.fontSize = '34px';
+
+    var btn = document.getElementsByTagName('button')[0];
+    btn.style.width = '345px';
+}
+</script>
+
+</body>
+</html>
+
