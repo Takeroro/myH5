@@ -4,12 +4,25 @@
        <meta charset="utf-8">
 	    <title>jQuerydemo</title> 
         <script src="./js/jquery-3.1.1.js">
-        
+        alert('jQuery版本：' + $.fn.jquery);
         </script>
+
+         
     </head>
     <body>
+        <div class="dick">here`s a dick </div>
+        <div id="tick"> tick </div>
+        <div class="green red"> greenDiv </div>
         <script type="text/javascript">
-        alert('jQuery版本：' + $.fn.jquery);
+        // alert('jQuery版本：' + $.fn.jquery);
+        var dick = $('.dick');
+        var tick = $('#tick');
+        
+        var mutilCls = $('.red.green');
+
+        console.log('dick = '+dick[0].innerHTML);
+        console.log("tick = "+tick[0].innerText);
+        console.log("mutilCls = "+mutilCls.length);
         </script>
     </body>
 </html>    
