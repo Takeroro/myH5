@@ -3,14 +3,38 @@
 <head>
 	<meta charset="utf-8">
 	<title>表单demo</title>
+	<script src="./js/jquery-3.1.1.js"> </script>
 </head>
 <body>
+	<form onsubmit="" id="myForm" action = "#0">
+		输入我的名字：<br>
+		<input type="text" name="name" size="20" id="name" value="name">
+		<br>
+		密码：<br>
+		<input type="password"  size="20" id="password" name="password"><br>
+		确认密码：<br>
+		<input type="password" name="confirmCode" size="20" id="confirmCode"><br>
+		<p>
+		<input type="radio" name = "gender" value="m" checked> 男</input>
+		<input type="radio" name = "gender" value="g" > gay</input>
+		<input type="radio" name = "gender" value="f"> 女</input><br><br>
+		</p>
+		 <p><label>City: <select name="city">
+        <option value="BJ" selected>Beijing</option>
+        <option value="SH">Shanghai</option>
+        <option value="CD">Chengdu</option>
+        <option value="XM">Xiamen</option>
+    </select></label></p>
+		<!--<input type="submit" name="" >按就将name,value传给action的路径，原来这样用的···-->
+	</form>
+	<button onclick="strToJson()"> 提交？</button>
 	<script type="text/javascript">
 		function confirm(){
 			var name = document.forms[0].name.value;
 			// alert("hello"+name);
 			checkFromReg();
 		}
+
 		function checkFromReg() {
 			var form = document.getElementById("myForm");
 			var name = document.getElementById('name').value;
@@ -43,14 +67,28 @@
 				alert('两次输入密码不一致！')
 			}
 			setTimeout()
+		}
 
+		function strToJson() {
+			var json = {};
+			var list = $('#myForm input,select');
+			list.map(function (){
+				if(this.name == 'gender'){
+					if(this.checked) {
+						json[this.name] = this.value;
+					}
+				}else {
+					json[this.name] = this.value;
+				}
+			});
+			console.log(json);
+			json = JSON.stringify(json);
+			console.log(json);
+		}
+
+		function tryToAlert() {
+			alert(123445);
 		}
 	</script>
-	<form onsubmit="confirm()" id="myForm">
-		输入我的名字：<input type="text" name="name" size="20" id="name" value="name"><br>
-		密码：<input type="password"  size="20" id="password" name="password"><br>
-		确认密码：<input type="password" name="confirmCode" size="20" id="confirmCode"><br>
-		<input type="submit" name="" >
-	</form>
 </body>
 </html>

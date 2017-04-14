@@ -6,6 +6,22 @@
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
 <body>
+	<script type="text/javascript">
+	 function decorateUI() {
+		 console.log(document.getElementsByTagName('h1').length);
+  		for( var i = 0; i < document.getElementsByTagName('h1').length; i++)
+    	{
+		alert('loop');
+   		 document.getElementsByTagName('h1')[i].style.fontSize='50px';
+    	}
+	}
+	// alert('fuckoff');
+	decorateUI();
+	</script>
+	<p>
+		我是一只草拟吗
+	</p>
+
 	<h1 style="text-align: center;">div</h1>
 	<div style="width: 1000px;height: 1500px;background-color: red">
 		<div style="width: 500px; height: 500px;background-color: blue;float:left;">
@@ -29,6 +45,7 @@
 			<td>2</td>
 		</tr>
 	</table>
+	
 </body>
 </html>
 

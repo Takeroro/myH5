@@ -3,13 +3,47 @@
     <head>
        <meta charset="utf-8">
 	    <title>jQuerydemo</title> 
-        <script src="./js/jquery-3.1.1.js">
-        
-        </script>
+        <script src="./js/jquery-3.1.1.js"> </script>
     </head>
     <body>
+        <h1 id = 'dick'>dick </h1>
+        <div id = 'list'> 
+            stockCodeList
+        </div>
         <script type="text/javascript">
-        alert('jQuery版本：' + $.fn.jquery);
+        $(function () {
+             console.log('init A...');//dom初始化完成后调用
+        });
+        // alert('jQuery版本：' + $.fn.jquery);
+        // https://api-weibo.zhiniu8.com/1.0/weibo/mobile/getBarrageStockList?appId=1003&data=%7B%22__uuid%22%3A%2286E987E1-C77A-4AB0-9064-08704331027C%22%7D&sign=sign
+         var jqxhr = $.getJSON('http://api-weibo.zhiniu8.com/1.0/weibo/mobile/getBarrageStockList', {
+                 sign: 'sign',
+                 appId: 1003
+        }).done(function (data) {
+    // data已经被解析为JSON对象了
+            // console.log(data);
+            // console.log(data.data.stockCodeList);
+            var list = data.data.stockCodeList;
+            var dickP = $("#dick");//事件绑定不用取第一个出来
+            dickP.on('mouseover', function () {
+                console.log(1234);
+            });
+            var container = $('#list');
+            // container.on('mouseover', function(){
+            //     alert(123);
+            // });
+            for(i = 0; i < list.length; i++) {
+                // console.log(list[i]);
+                // var code = document.createElement("li");
+                // code.innerText = list[i];
+                // code.id = list[i];
+                // container[0].appendChild(code); //用dom对象擦做
+                // container.append(code);//直接用jquery对象操作
+
+                container.append('<li>'+list[i]+'</li>');//一气呵成！
+            }
+
+        });
         </script>
     </body>
 </html>    
